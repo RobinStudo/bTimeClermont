@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ event.name }} - {{ parent() }}{% endblock %}
+
+{% block body %}
+<h1 class="event-title" style="background-image: url('{{ event.picture }}');">
+    <span>{{ event.name }}</span>
+</h1>
+
+<div class="container event">
+    <div class="row">
+        <div class="col-12 col-md-8 py-4">
+            {{ event.description }}
+        </div>
+        <div class="col-12 col-md-4 bg-dark text-light py-4">
+            <div class="">
+                <strong>Début : </strong>
+                {{ event.startAt|date('d/m/Y H:i') }}
+            </div>
+
+            <div class="">
+                <strong>Fin : </strong>
+                {{ event.endAt|date('d/m/Y H:i') }}
+            </div>
+
+            <div class="">
+                <strong>Prix : </strong>
+                {{ event.price ? event.price ~ '€' : 'Gratuit' }}
+            </div>
+
+            <div class="">
+                <strong>Capacité : </strong>
+
+                {{ event.capacity }}
+            </div>
+
+            <div class="">
+                <strong>Lieu : </strong>
+
+                {{ event.place }}
+            </div>
+
+            <div class="">
+                <strong>Organisateur : </strong>
+
+                {{ event.owner }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
