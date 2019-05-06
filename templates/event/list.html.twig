@@ -27,7 +27,7 @@
                     <p class="card-text">{{ event.description|slice(0, 100) }}...</p>
                     <div class="card-info">
                         <div>{{ event.price ? event.price ~ '€' : 'Gratuit' }}</div>
-                        <div>{{ event.place }}</div>
+                        <div>{{ event.place.city }}</div>
                     </div>
                     <a href="{{ path( 'event_show', {"id": event.id} ) }}" class="btn btn-primary">Voir plus</a>
                 </div>

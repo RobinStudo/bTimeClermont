@@ -37,13 +37,13 @@
             <div class="">
                 <strong>Lieu : </strong>
 
-                {{ event.place }}
+                {{ event.place.name }} - {{ event.place.city }}
             </div>
 
             <div class="">
                 <strong>Organisateur : </strong>
 
-                {{ event.owner }}
+                {{ event.owner.username }} ({{ event.owner.email }})
             </div>
         </div>
     </div>
