@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
@@ -20,16 +21,24 @@ class Event
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $name;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank
+     * @Assert\GreaterThan("today")
      */
     private $startAt;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank
+     * @Assert\Expression(
+     *     "this.getStartAt() < this.getEndAt()",
+     *     message="Date de début doit être inférieur!"
+     * )
      */
     private $endAt;
 
@@ -40,11 +49,13 @@ class Event
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $picture;
 
@@ -61,6 +72,7 @@ class Event
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Place")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank
      */
     private $place;
 
