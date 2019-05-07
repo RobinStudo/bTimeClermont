@@ -17,4 +17,8 @@ class EventService{
     public function get( $id ){
         return $this->repository->find( $id );
     }
+
+    public function search( $term ){
+        return $this->repository->search( $term );
+    }
 }
